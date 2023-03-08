@@ -3,8 +3,11 @@ const chats=require('./data/data.js')
 const app=express();
 const dotenv=require('dotenv');
 const cors=require('cors');
-dotenv.config();
 
+const connectDB=require('./config/db.js');
+
+dotenv.config();
+connectDB();
 const PORT=process.env.PORT || 5000;
 app.use(cors());
 
