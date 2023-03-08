@@ -1,23 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { Button } from "@chakra-ui/react";
+import { useEffect, useState } from "react";
+import { Routes, Route, Link } from "react-router-dom";
+import axios from "axios";
+import Home from "./pages/Home";
+import ('./App.css');
 
 function App() {
+  const [date, setDate] = useState([]);
+  // const BASE_URL = "http://localhost:5000";
+  const BASE_URL = "";
+
+  const fetchChats = async () => {
+    let chats = await axios.get( BASE_URL +"/api/chat");
+    console.log(chats)
+    setDate(chats.data);
+  };
+
+  useEffect(() => {
+    fetchChats();
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="App"> 
+    <Home/>     
     </div>
   );
 }
