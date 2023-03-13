@@ -25,7 +25,7 @@ const registerUser=asyncHandler(async(req, res)=>{
             email:user.email,
             pic:user.pic,
             token: generateToken(user._id),
-        })
+        }) 
     }
     else{
         res.status(400);
