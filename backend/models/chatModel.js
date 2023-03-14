@@ -13,7 +13,7 @@ const  ChatModel=mongoose.Schema({
         type:mongoose.Schema.Types.ObjectId,
         ref:"User",
     }],
-    lastestMessage:{
+    latestMessage:{
         type:mongoose.Schema.Types.ObjectId, 
         ref:"Message"
     },
@@ -22,7 +22,7 @@ const  ChatModel=mongoose.Schema({
         ref:"User",
     }
 },{
-    timestamps:true
+    timestaps:true
 })
 
 const Chat=mongoose.model("Chat",  ChatModel);
