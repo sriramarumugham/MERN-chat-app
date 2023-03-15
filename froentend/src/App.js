@@ -1,15 +1,18 @@
 import React from "react";
-import { Button } from "@chakra-ui/react";
-import { useEffect, useState } from "react";
-import { Routes, Route, Link } from "react-router-dom";
-import axios from "axios";
 import Home from "./pages/Home";
+import {Routes , Route} from 'react-router-dom';
+import ChatPage from "./pages/ChatPage";
+
 import ('./App.css');
 
 function App() {
   return (
     <div className="App"> 
-    <Home/>     
+    <Routes>
+      <Route exact path="/" element={<Home/>}/>
+      <Route exact path="/chat" element={<ChatPage/>}/>
+    </Routes>
+    {/* <Home/>      */}
     </div>
   );
 }

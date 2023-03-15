@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Login from "../components/authentication/Login";
 import Signup from "../components/authentication/Signup";
 import {
@@ -11,8 +11,18 @@ import {
   TabPanels,
   TabPanel,
 } from "@chakra-ui/react";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
+  const navigate=useNavigate();
+  useEffect(() => {
+    const user = localStorage.getItem("userInfo");
+    console.log(user);
+    if (user) {
+      navigate("/chat")
+    }
+  }, [navigate]);
+
   return (
     <Container maxWidth="xl" centerContent>
       <Box
@@ -30,17 +40,17 @@ const Home = () => {
         </Text>
       </Box>
       <Box bg={"white"} w="100%" p={4} borderRadius={"lg"} borderWidth={"1px"}>
-        <Tabs variant="soft-rounded" >
+        <Tabs variant="soft-rounded">
           <TabList mb={"1em"}>
             <Tab w={"50%"}>Login</Tab>
             <Tab w={"50%"}>Sign Up</Tab>
           </TabList>
           <TabPanels>
             <TabPanel>
-           <Login/>
+              <Login />
             </TabPanel>
             <TabPanel>
-            <Signup/>
+              <Signup />
             </TabPanel>
           </TabPanels>
         </Tabs>
