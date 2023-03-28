@@ -14,12 +14,12 @@ import {
 import { useNavigate } from "react-router-dom";
 
 const Home = () => {
-  const navigate=useNavigate();
+  const navigate = useNavigate();
   useEffect(() => {
     const user = localStorage.getItem("userInfo");
-    console.log(user);
+    console.log(" user logged in", user);
     if (user) {
-      navigate("/chat")
+      navigate("/chat");
     }
   }, [navigate]);
 

@@ -1,5 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+
 const ChatContext = createContext();
 
 const ChatProvider = ({ children }) => {
@@ -7,7 +8,8 @@ const ChatProvider = ({ children }) => {
   const navigate=useNavigate();
 
   useEffect(() => {
-    const userInfo = localStorage.getItem("userInfo");
+    let userInfo = localStorage.getItem("userInfo");
+    userInfo= JSON.parse(userInfo);
     setUser(userInfo);
     if (!userInfo) {
         navigate('/');
